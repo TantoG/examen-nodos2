@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 11% 18%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 11% 20%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 11% 20%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 210 20% 95%;
+    --primary-foreground: 210 11% 18%;
+
+    --secondary: 210 11% 25%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 210 11% 25%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 210 11% 25%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    --border: 210 11% 30%;
+    --input: 210 11% 25%;
+    --ring: 210 20% 95%;
+
+    --radius: 0.5rem;
+
+    /* Node colors - specific for each node */
+    --node-bg: 0 0% 13%;
+    --node-a-title: 237 42% 31%;
+    --node-b-title: 23 55% 27%;
+    --node-c-title: 158 39% 24%;
+    --node-d-title: 291 22% 41%;
+
+    /* Canvas colors */
+    --canvas-bg: 210 11% 17%;
+    --canvas-grid: 210 11% 22%;
+
+    /* Socket colors */
+    --socket-input: 190 70% 60%;
+    --socket-output: 30 80% 65%;
+
+    /* Connection colors */
+    --connection-valid: 142 76% 36%;
+    --connection-invalid: 0 84% 60%;
+    --connection-neutral: 210 10% 50%;
+
+    --sidebar-background: 210 11% 20%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 210 20% 95%;
+    --sidebar-primary-foreground: 210 11% 18%;
+    --sidebar-accent: 210 11% 25%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 11% 30%;
+    --sidebar-ring: 210 20% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-canvas-bg text-foreground;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer utilities {
+  .node-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .node-shadow-lifted {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .grid-pattern {
+    background-color: hsl(var(--canvas-bg));
+    background-image: 
+      /* Main grid */
+      linear-gradient(hsl(var(--canvas-grid)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--canvas-grid)) 1px, transparent 1px),
+      /* Axis lines - subtle */
+      linear-gradient(to right, transparent calc(50% - 0.5px), hsl(210 10% 30%) calc(50% - 0.5px), hsl(210 10% 30%) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+      linear-gradient(to bottom, transparent calc(50% - 0.5px), hsl(210 10% 30%) calc(50% - 0.5px), hsl(210 10% 30%) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+    background-size: 20px 20px, 20px 20px, 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0, 50% 50%, 50% 50%;
+  }
+
+  .socket-hover {
+    transition: all 0.2s ease;
+  }
+
+  .socket-hover:hover {
+    transform: scale(1.4);
+    box-shadow: 0 0 8px currentColor;
+  }
+}
